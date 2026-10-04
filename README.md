@@ -2,8 +2,8 @@
 
 > A complete, production-quality, client-side web music player for your local audio files. Built with **React 19**, **Tailwind CSS**, **Vite**, **React Router**, **HTML5 Audio**, and **IndexedDB**. 100% offline, privacy-first, zero backend, and installable as a Progressive Web App (PWA).
 
-**Live App**         : [https://localtunes-gamma.vercel.app](https://localtunes-gamma.vercel.app)  
-**GitHub Repository**: [https://github.com/AnshuChaudhary012/localtunes](https://github.com/AnshuChaudhary012/localtunes)
+**Live App**         : [https://localtunes-react.vercel.app](https://localtunes-react.vercel.app)  
+**GitHub Repository**: [https://github.com/AnshuChaudhary012/localtunes-react](https://github.com/AnshuChaudhary012/localtunes-react)
 
 ---
 
@@ -21,7 +21,7 @@ You do **not** need to install Node.js, clone the repository, or compile any cod
 
 ### Step 1: Open the Web App
 Open your browser (Safari, Chrome, Firefox, Edge, Brave, etc.) and navigate to:
-👉 **[https://localtunes-gamma.vercel.app](https://localtunes-gamma.vercel.app)**
+👉 **[https://localtunes-react.vercel.app](https://localtunes-react.vercel.app)**
 
 ---
 
@@ -55,7 +55,7 @@ Because web browsers run in a secure sandbox, websites cannot scan your device s
 For the best full-screen native app experience without browser navigation bars:
 
 - **Apple iOS (iPhone & iPad)**:
-  1. Open [https://localtunes-gamma.vercel.app](https://localtunes-gamma.vercel.app) in **Safari**.
+  1. Open [https://localtunes-react.vercel.app](https://localtunes-react.vercel.app) in **Safari**.
   2. Tap the **Share** button (the square with an upward arrow at the bottom of Safari).
   3. Scroll down and tap **"Add to Home Screen"**.
   4. Tap **Add** in the top right corner.
@@ -222,7 +222,7 @@ If you wish to modify the code or contribute to LocalTunes, you can run it local
 ### Installation
 ```bash
 # Clone the repository
-git clone https://github.com/AnshuChaudhary012/localtunes.git
+git clone https://github.com/AnshuChaudhary012/localtunes-react.git
 
 # Navigate to project folder
 cd localtunes-react
