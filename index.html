@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" class="dark h-full">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=no" />
+  <meta name="theme-color" content="#0a0d14" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="LocalTunes" />
+  <meta name="description"
+    content="Production-quality offline web music player with zero backend, local IndexedDB storage, and rich audio controls." />
+
+  <title>LocalTunes - Offline Web Music Player</title>
+
+  <!-- PWA Manifest & Icons -->
+  <link rel="manifest" href="/manifest.webmanifest" />
+  <link rel="icon" type="image/svg+xml" href="/favicon/favicon.svg" />
+  <link rel="apple-touch-icon" href="/icons/icon-192.png" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap"
+    rel="stylesheet" />
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="/src/styles/style.css" />
+
+  <!-- Immediate Theme & Accent Initialization (prevents flash of wrong theme) -->
+  <script>
+    (function () {
+      try {
+        var raw = localStorage.getItem('localtunes_settings');
+        var settings = raw ? JSON.parse(raw) : null;
+        var theme = settings && settings.theme ? settings.theme : 'system';
+        var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+        var isDark = theme === 'dark' || (theme === 'system' && prefersDark);
+        if (isDark) {
+          document.documentElement.classList.add('dark');
+          document.documentElement.setAttribute('data-theme', 'dark');
+        } else {
+          document.documentElement.classList.remove('dark');
+          document.documentElement.setAttribute('data-theme', 'light');
+        }
+        var accent = settings && settings.accentColor ? settings.accentColor : 'cyan';
+        document.documentElement.setAttribute('data-accent', accent);
+        if (settings && settings.layout === 'compact') {
+          document.documentElement.classList.add('layout-compact');
+        }
+        if (settings && settings.showArtwork === false) {
+          document.documentElement.classList.add('hide-artwork');
+        }
+      } catch (e) {}
+    })();
+  </script>
+</head>
+
+<body class="bg-dark-bg text-slate-100 h-full w-full flex overflow-hidden">
+  <!-- Persistent Native HTML5 Audio Element for Resilient iOS / Background Playback -->
+  <audio id="localtunes-audio" preload="auto" playsinline webkit-playsinline x-webkit-airplay="allow" controlslist="nodownload" style="display: none;"></audio>
+
+  <!-- Hidden File Input for Audio Import -->
+  <input type="file" id="audio-file-input" multiple accept="audio/*,.mp3,.m4a,.wav,.aac,.ogg,.flac" class="hidden" />
+
+  <!-- React Application Root Container -->
+  <div id="root" class="h-full w-full"></div>
+
+  <script type="module" src="/src/main.jsx"></script>
+</body>
+
+</html>
